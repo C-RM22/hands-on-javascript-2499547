@@ -15,7 +15,7 @@ const windDir = document.querySelector(".getWDir");
 
 const displayData = () => {
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?${settings.location}&appid=${settings.appid}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${settings.location}&appid=${settings.appid}&units=${settings.units}`
   )
     .then(function (response) {
       return response.json();
