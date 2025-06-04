@@ -9,10 +9,18 @@ import data from "./data.js";
 
 const mainContent = document.querySelector(".main-content");
 
+const getDate = (imgData) => {
+  const date = new Date(imgData.created_at);
+  const niceDate = date.toLocaleString("default", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  return niceDate;
+};
+
 const Card = (data) => {
   const imgData = data[0];
-
-  const date = new Date(imgData.created_at);
 
   const markup = `
     <figure class="image">
@@ -39,11 +47,7 @@ const Card = (data) => {
           <p>
             Uploaded on
             <time class="image__date" datetime="${imgData.created_at}">
-              ${date.toLocaleString("default",{
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+              ${getDate(imgData)}
             </time>
           </p>
           <p>
